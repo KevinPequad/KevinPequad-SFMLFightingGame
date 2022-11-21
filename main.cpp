@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "drawmap.h"
 #include "player.h"
-
 #include <SFML/Window.hpp>
 #include <iostream>
 
