@@ -2,19 +2,18 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <Vector>
-
+using namespace sf;
 class drawmap {
 
-private:
+public:
 	
 	drawmap();
-	void mouserightclickdelete();
-	void mouseleftclickadd();
-	void getmousetomap();
+	void mouserightclickdelete(sf::Vector2i addvector2i);
+	void mouseleftclickadd(sf::Vector2i addvector2i);
 	sf::VertexArray returnmap();
-protected:
+private:
 	sf::VertexArray map;
 	sf::Vector2i mouseposition;
-	
+	sf::RenderWindow drawwindow;
 
 };

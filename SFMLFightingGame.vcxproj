@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.props" Condition="Exists('packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -109,6 +110,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>C:\SFML\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -120,14 +123,20 @@
     <ClInclude Include="drawmap.h" />
     <ClInclude Include="player.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="packages\vcpkg.C.Users.KevinHagy.vcpkg.1.0.0\build\native\vcpkg.C.Users.KevinHagy.vcpkg.targets" Condition="Exists('packages\vcpkg.C.Users.KevinHagy.vcpkg.1.0.0\build\native\vcpkg.C.Users.KevinHagy.vcpkg.targets')" />
+    <Import Project="packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.targets" Condition="Exists('packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\vcpkg.C.Users.KevinHagy.vcpkg.1.0.0\build\native\vcpkg.C.Users.KevinHagy.vcpkg.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\vcpkg.C.Users.KevinHagy.vcpkg.1.0.0\build\native\vcpkg.C.Users.KevinHagy.vcpkg.targets'))" />
+    <Error Condition="!Exists('packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.props'))" />
+    <Error Condition="!Exists('packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\vcpkg.C.Users.thoug.vcpkg.1.0.0\build\native\vcpkg.C.Users.thoug.vcpkg.targets'))" />
   </Target>
 </Project>
